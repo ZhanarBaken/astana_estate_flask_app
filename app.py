@@ -128,8 +128,7 @@ def prediction_result():
     return render_template("prediction_result.html", prediction_text=prediction_text)
 
 if __name__ == "__main__":
-    # flask_app.run(host='0.0.0.0', port=8080)
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 5000))
     flask_app.run(debug=True,host='0.0.0.0',port=port)
     
 #gunicorn -w 4 -b 0.0.0.0:8080 run_gunicorn:flask_app 

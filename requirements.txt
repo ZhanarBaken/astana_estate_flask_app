@@ -10,7 +10,6 @@ fonttools==4.50.0
 geographiclib==2.0
 geopy==2.4.1
 graphviz==0.20.3
-gunicorn==21.2.0
 idna==3.6
 itsdangerous==2.1.2
 Jinja2==3.1.3
