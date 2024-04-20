@@ -1,22 +1,20 @@
 # Используем базовый образ Python
 FROM python:3.12.2
 
-# Устанавливаем переменную окружения для предотвращения вывода байт-кодов Python
-ENV PYTHONDONTWRITEBYTECODE 1
-# Устанавливаем переменную окружения для отключения вывода журнала Python
-ENV PYTHONUNBUFFERED 1
+# Устанавливаем переменную окружения для работы Flask
+ENV FLASK_APP=app.py
 
-ENV PORT 8080
+# Копируем все файлы из текущего каталога в контейнер
+COPY . /app
 
-# Устанавливаем рабочую директорию внутри контейнера
+# Устанавливаем зависимости из requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# Переключаемся в каталог приложения
 WORKDIR /app
 
-# Копируем файлы зависимостей и устанавливаем их
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+# Определяем порт, который будет открыт в контейнере
+EXPOSE 8080
 
-# Копируем остальные файлы приложения внутрь контейнера
-COPY . /app/
-
-# Указываем команду для запуска приложения
-CMD ["python", "app.py"]
+# Запускаем Gunicorn приложение
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:flask_app"]
