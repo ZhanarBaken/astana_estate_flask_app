@@ -17,4 +17,4 @@ WORKDIR /app
 EXPOSE 8080
 
 # Запускаем Gunicorn приложение
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:flask_app"]
+CMD ['gunicorn -w 4 -b 0.0.0.0:8080 run_gunicorn:flask_app']
