@@ -112,10 +112,6 @@ def send_static(path):
 def Home():
     return render_template("index.html")
 
-@flask_app.route('/favicon.ico')
-def favicon():
-    return flask_app.send_static_file('favicon.ico')
-
 
 @flask_app.route("/predict", methods=["POST"])
 def predict():
