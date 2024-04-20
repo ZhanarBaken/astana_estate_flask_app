@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Устанавливаем переменную окружения для отключения вывода журнала Python
 ENV PYTHONUNBUFFERED 1
 
+ENV PORT 8080
+
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
